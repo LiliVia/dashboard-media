@@ -4,11 +4,10 @@ export default class DashboardController {
     // console.log(service);
     $scope.itemId = $routeParams.id;
 
-    $scope.campaigns = service.campaigns;
+    $scope.campaigns = [];
 
     service.getCampaigns($http).then(function (data) {
-      console.log('service.data');
-      // console.log(response.data);
+      console.log(data);
       $scope.campaigns = data;
     }).catch(function (error) {
       console.log('unable to get the data', error);
