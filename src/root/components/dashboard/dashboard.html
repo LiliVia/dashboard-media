@@ -1,0 +1,46 @@
+<div class="dashboard">
+  <md-content class="md-padding list" layout-xs="column" layout="row">
+    <div class="list-item" ng-repeat="item in campaigns | limitTo: itemsLimit()" layout="column">
+      <md-card ng-class="card">
+        <md-card-header class="">
+          <md-card-header-text>
+            <span class="md-title">{{item.name}}</span>
+            <span class="md-subhead">{{item.type}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <div class="media">
+          <md-card-title>
+            <md-card-title-text layout="column" layout-align="space-between">
+              <span class="md-subhead">{{item.approved_posts}}</span>
+              <span class="md-headline">{{item.approved_posts}}</span>
+            </md-card-title-text>
+            <md-card-title-text layout="column" layout-align="space-between">
+              <span class="md-subhead">Likes</span>
+              <span class="md-headline">{{item.approved_likes}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-title>
+            <md-card-title-text layout="column" layout-align="space-between">
+              <span class="md-subhead">Influencers</span>
+              <span class="md-headline">{{item.influencers}}</span>
+            </md-card-title-text>
+            <md-card-title-text layout="column" layout-align="space-between">
+              <span class="md-subhead">Comments</span>
+              <span class="md-headline">{{item.approved_comments}}</span>
+            </md-card-title-text>
+          </md-card-title>
+        </div>
+        <md-card-actions layout="row" layout-align="space-between">
+          <md-button ng-click="card='hide'">Hide</md-button>
+          <md-button class="show">
+            <a href="/details/{{item.id}}">Show details</a>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <md-button class="showmore" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">
+      <span class="showitems">+ {{pageSize}}</span>
+      <span>More to show</span>
+    </md-button>
+  </md-content>
+</div>

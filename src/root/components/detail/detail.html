@@ -1,0 +1,147 @@
+<div class="details" ng-init="details">
+
+  <section class="social md-padding" layout-xs="column" layout="row" layout-align="start center">
+    <md-button class="md-raised" ng-click="filterItems = {social_network : 'instagram'}">Instagram</md-button>
+    <md-button class="md-raised" ng-click="filterItems = {social_network : 'youtube'}">Youtube</md-button>
+    <md-button class="md-raised" ng-click="filterItems = {social_network : 'facebook'}">Facebook</md-button>
+    <md-button class="md-raised" ng-click="filterItems = {social_network : 'twitter'}">Twitter</md-button>
+  </section>
+
+  <md-content class="md-padding" layout="column">
+    <md-tabs class="cards-status" md-selected="selectedIndex" md-border-bottom="" md-dynamic-height md-autoselect="" md-no-pagination="true"
+      flex>
+      <md-tab label="pending">
+
+        <div class="filter md-padding" layout-xs="column" layout="row" layot-align="space-between">
+          <md-chips ng-model="chips" readonly="readonly" md-removable="removable" placeholder="+ keyword">
+          </md-chips>
+          <md-button class="md-raised md-primary" ng-click="applySearch()">Filter</md-button>
+        </div>
+        <md-content class="md-padding items-length" layout-xs="column" layout="row" layout="left">
+          <span ng-bind="details.length"></span>
+          <span>&nbsp;items total</span>
+        </md-content>
+
+        <div class="md-padding">
+          <div class="details-cards md-padding" layout-xs="column" layout="row">
+            <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+              <md-card>
+                <md-card-header>
+                  <md-card-avatar>
+                    <img class="md-user-avatar" ng-src="{{imgUrl}}">
+                  </md-card-avatar>
+                  <md-card-header-text class="">
+                    <span class="md-title author" layout="left">&#64;{{item.author_username}}</span>
+                    <span class="md-subhead social-network">{{item.social_network}}</span>
+                  </md-card-header-text>
+                </md-card-header>
+                <div class="post-image-caption">
+                  <div class="md-card-img background-div post-image" ng-style="{'background-image':'url('+item.pic+')'}"></div>
+                  <div class="post-caption">
+                    <div class="caption">{{item.caption}}</div>
+                  </div>
+                </div>
+                <md-card-title class="raiting">
+                  <md-card-title-text layout="column" layout-align="space-between">
+                    <span class="md-subhead">Likes</span>
+                    <span class="md-headline">{{item.likes_number}}</span>
+                  </md-card-title-text>
+                  <md-card-title-text layout="column" layout-align="space-between">
+                    <span class="md-subhead">Comments</span>
+                    <span class="md-headline">{{item.comments_number}}</span>
+                  </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button ng-click="reject()">Reject</md-button>
+                  <md-button class="approve" ng-click="approve()">Approve</md-button>
+                </md-card-actions>
+              </md-card>
+          </div>
+        </div>
+      </md-tab>
+
+      <md-tab label="approved">
+
+        <md-content class="md-padding items-length" layout-xs="column" layout="row" layout="left">
+          <span ng-bind="approved.length"></span>
+          <span>&nbsp;items total</span>
+        </md-content>
+
+        <md-content class="details-cards md-padding" layout-xs="column" layout="row">
+          <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+            <md-card>
+              <md-card-header>
+                <md-card-avatar>
+                  <img class="md-user-avatar" ng-src="{{imgUrl}}">
+                </md-card-avatar>
+                <md-card-header-text class="">
+                  <span class="md-title author" layout="left">&#64;{{item.author_username}}</span>
+                  <span class="md-subhead social-network">{{item.social_network}}</span>
+                </md-card-header-text>
+              </md-card-header>
+              <div class="post-image-caption">
+                <div class="md-card-img background-div post-image" ng-style="{'background-image':'url('+item.pic+')'}"></div>
+                <div class="post-caption">
+                  <div class="caption">{{item.caption}}</div>
+                </div>
+              </div>
+              <md-card-title class="raiting">
+                <md-card-title-text layout="column" layout-align="space-between">
+                  <span class="md-subhead">Likes</span>
+                  <span class="md-headline">{{item.likes_number}}</span>
+                </md-card-title-text>
+                <md-card-title-text layout="column" layout-align="space-between">
+                  <span class="md-subhead">Comments</span>
+                  <span class="md-headline">{{item.comments_number}}</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="reject()">Reject</md-button>
+              </md-card-actions>
+            </md-card>
+        </md-content>
+      </md-tab>
+      <md-tab label="rejected">
+        <md-content class="md-padding items-length" layout-xs="column" layout="row" layout="left">
+          <span ng-bind="rejected.length"></span>
+          <span>&nbsp;items total</span>
+        </md-content>
+
+        <md-content class="details-cards md-padding" layout-xs="column" layout="row">
+          <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+            <md-card>
+              <md-card-header>
+                <md-card-avatar>
+                  <img class="md-user-avatar" ng-src="{{imgUrl}}">
+                </md-card-avatar>
+                <md-card-header-text class="">
+                  <span class="md-title author" layout="left">&#64;{{item.author_username}}</span>
+                  <span class="md-subhead social-network">{{item.social_network}}</span>
+                </md-card-header-text>
+              </md-card-header>
+              <div class="post-image-caption">
+                <div class="md-card-img background-div post-image" ng-style="{'background-image':'url('+item.pic+')'}"></div>
+                <div class="post-caption">
+                  <div class="caption">{{item.caption}}</div>
+                </div>
+              </div>
+              <md-card-title class="raiting">
+                <md-card-title-text layout="column" layout-align="space-between">
+                  <span class="md-subhead">Likes</span>
+                  <span class="md-headline">{{item.likes_number}}</span>
+                </md-card-title-text>
+                <md-card-title-text layout="column" layout-align="space-between">
+                  <span class="md-subhead">Comments</span>
+                  <span class="md-headline">{{item.comments_number}}</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button class="approve" ng-click="approve()">Approve</md-button>
+              </md-card-actions>
+            </md-card>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+
+</div>

@@ -1,0 +1,21 @@
+.root {
+  text-align: center;
+  color: red;
+  .header {
+    text-align: left;
+    padding: 2.2rem 4rem;
+    margin: 2px;
+    background: rgb(241, 240, 240);
+    :hover {
+        color: black;
+        text-decoration: underline;
+    }
+    > a {
+        text-decoration: none;
+        color: rgb(97, 93, 93);
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+}
+
+}
