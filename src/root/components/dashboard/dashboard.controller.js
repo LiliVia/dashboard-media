@@ -1,10 +1,18 @@
 
 export default class DashboardController {
-  constructor($scope, $routeParams, service) {
-    console.log(service);
+  constructor($scope, $routeParams, service, $http) {
+    // console.log(service);
     $scope.itemId = $routeParams.id;
 
     $scope.campaigns = service.campaigns;
+
+    service.getCampaigns($http).then(function (data) {
+      console.log('service.data');
+      // console.log(response.data);
+      $scope.campaigns = data;
+    }).catch(function (error) {
+      console.log('unable to get the data', error);
+    });
 
     let pagesShown = 1;
     $scope.pageSize = 7;

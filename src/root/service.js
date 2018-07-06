@@ -186,16 +186,15 @@ export default class DashboardService {
 
 
   getPosts($http) {
-    return $http.get('media.json').then(function (response) {
+    return $http.get('/media.json').then(function (response) {
       return response.data;
     });
-  };
-
-  getCampaigns() {
-    return this.campaigns;
   }
 
-  getDetails() {
-    return this.details;
+  getCampaigns($http) {
+    return $http.get('campaigns.json').then(function (response) {
+      return response.data;
+    });
   }
+
 }

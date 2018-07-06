@@ -4,12 +4,12 @@ export default class DetailController {
     $scope.detailId = $routeParams.id;
     $scope.details = service.details;
 
-    service.getPosts().then(function (data) {
+    service.getPosts($http).then(function (data) {
       console.log('service.data');
       // console.log(response.data);
       $scope.details = data;
-    }).catch(function () {
-      console.log('unable to get the data');
+    }).catch(function (error) {
+      console.log('unable to get the data', error);
     });
 
     $scope.chips = ['ever'];
