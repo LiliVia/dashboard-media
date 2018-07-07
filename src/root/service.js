@@ -16,4 +16,16 @@ export default class DashboardService {
     });
   }
 
+  removePost(id, arr, newArr) {
+    let post = {};
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (arr[i].id === id) {
+        post = arr[i];
+        arr.splice(i, 1);
+        break;
+      }
+    }
+    newArr.push(post);
+  };
+
 }

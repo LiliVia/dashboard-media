@@ -24,7 +24,7 @@
 
         <div class="md-padding">
           <div class="details-cards md-padding" layout-xs="column" layout="row">
-            <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+            <div="container-item" layout="column" ng-repeat="item in pending | filter:filterItems | keywords:copyChips">
               <md-card>
                 <md-card-header>
                   <md-card-avatar>
@@ -52,8 +52,8 @@
                   </md-card-title-text>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                  <md-button ng-click="reject()">Reject</md-button>
-                  <md-button class="approve" ng-click="approve()">Approve</md-button>
+                  <md-button ng-click="reject(item.id, pending)">Reject</md-button>
+                  <md-button class="approve" ng-click="approve(item.id, pending)">Approve</md-button>
                 </md-card-actions>
               </md-card>
           </div>
@@ -68,7 +68,7 @@
         </md-content>
 
         <md-content class="details-cards md-padding" layout-xs="column" layout="row">
-          <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+          <div="container-item" layout="column" ng-repeat="item in approved | filter:filterItems | keywords:copyChips">
             <md-card>
               <md-card-header>
                 <md-card-avatar>
@@ -96,7 +96,7 @@
                 </md-card-title-text>
               </md-card-title>
               <md-card-actions layout="row" layout-align="end center">
-                <md-button ng-click="reject()">Reject</md-button>
+                <md-button ng-click="reject(item.id, approved)">Reject</md-button>
               </md-card-actions>
             </md-card>
         </md-content>
@@ -108,7 +108,7 @@
         </md-content>
 
         <md-content class="details-cards md-padding" layout-xs="column" layout="row">
-          <div="container-item" layout="column" ng-repeat="item in details | filter:filterItems | keywords:copyChips">
+          <div="container-item" layout="column" ng-repeat="item in rejected | filter:filterItems | keywords:copyChips">
             <md-card>
               <md-card-header>
                 <md-card-avatar>
@@ -136,7 +136,7 @@
                 </md-card-title-text>
               </md-card-title>
               <md-card-actions layout="row" layout-align="end center">
-                <md-button class="approve" ng-click="approve()">Approve</md-button>
+                <md-button class="approve" ng-click="approve(item.id, rejected)">Approve</md-button>
               </md-card-actions>
             </md-card>
         </md-content>

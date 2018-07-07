@@ -4,7 +4,7 @@ export default function router($routeProvider, $locationProvider) {
         .when('/dashboard', {
             template: `<dashboard></dashboard>`
         })
-        .when('/details/:detailId', {
+        .when('/campaigns/:detailId', {
             template: `<detail></detail>`
         })
         .otherwise({
